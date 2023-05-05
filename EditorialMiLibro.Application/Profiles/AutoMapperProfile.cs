@@ -9,6 +9,7 @@ namespace EditorialMiLibro.Application.Profiles
         public AutoMapperProfile()
         {
             CreateMap<Libro, LibroDto>();
+            CreateMap<Libro, LibroDetalleDto>();
             
         }
     }

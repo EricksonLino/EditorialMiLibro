@@ -23,5 +23,12 @@ namespace EditorialMiLibro.Application.Implementaciones
 
             
         }
+
+        public async Task<LibroDetalleDto> ObtenerLibro(int id)
+        {
+            var libro = await libroRepository.ObtenerLibro(id);
+            var libroDetalleDto = mapper.Map<LibroDetalleDto>(libro);
+            return libroDetalleDto;
+        }
     }
 }

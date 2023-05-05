@@ -21,5 +21,16 @@ namespace EditorialMiLibro.API.Controllers
             var misLibros = await this.libroApplication.ListarLibros();
             return misLibros;
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<LibroDetalleDto>> ObtenerLibro(int id)
+        {
+            var libro = await libroApplication.ObtenerLibro(id);
+            if(libro == null)
+            {
+                return NotFound($" Alumno con ID {id} no encontrado" );
+            }
+            return libro;
+        }
     }
 }

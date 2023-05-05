@@ -17,5 +17,12 @@ namespace EditorialMiLibro.Repository.Implementaciones
             var misLibros = await context.MisLibros.ToListAsync();
             return misLibros;
         }
+
+        public async Task<Libro> ObtenerLibro(int Id)
+        {
+            var libro = await context.MisLibros.FirstOrDefaultAsync(x => x.Id == Id);
+            return libro;
+            
+        }
     }
 }
