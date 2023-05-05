@@ -1,11 +1,20 @@
+using EditorialMiLibro.Application.Implementaciones;
+using EditorialMiLibro.Application.Interfaces;
+using EditorialMiLibro.Application.Profiles;
 using EditorialMiLibro.Repository;
+using EditorialMiLibro.Repository.Implementaciones;
+using EditorialMiLibro.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<ApplicationDbContext>(conf => 
+builder.Services.AddDbContext<ApplicationDbContext>(conf =>
                             conf.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IlibroApplication, Libroapplication>();
+builder.Services.AddScoped<ILibroRepository, LibroRepository>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
